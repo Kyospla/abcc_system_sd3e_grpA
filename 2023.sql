@@ -17,8 +17,8 @@ CREATE TABLE threads
  user_id   	  VARCHAR(100) NOT NULL,
  threads_date     DATE 	       NOT NULL,
  comments_id      VARCHAR(100) NOT NULL,
- PRIMARY KEY(user_id)
- FOREIGN KEY(threads_id)REFERENCES threads(threads_id),
+ PRIMARY KEY(threads_id),
+ FOREIGN KEY(user_id)REFERENCES users(user_id),
  FOREIGN KEY(comments_id)REFERENCES comments(comments_id)
 );
 
@@ -32,7 +32,7 @@ CREATE TABLE comments
  post_date	  DATE		 NOT NULL,
  PRIMARY KEY(comments_id),
  FOREIGN KEY(threads_id)REFERENCES threads(threads_id),
- FOREIGN KEY(user_mail)REFERENCES users(user_mail)
+ FOREIGN KEY(user_id)REFERENCES users(user_id)
 );
 
  
@@ -41,6 +41,6 @@ CREATE TABLE comments
 CREATE TABLE Post_historys
 (user_id          VARCHAR(100) NOT NULL,
  history_id       VARCHAR(100) NOT NULL,
- PRIMARY KEY(user_id),
- FOREIGN KEY(history_id) REFERENCES historys (history_id)
+ PRIMARY KEY(history_id),
+ FOREIGN KEY(user_id) REFERENCES users(user_id)
 );
