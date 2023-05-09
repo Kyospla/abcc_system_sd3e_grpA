@@ -16,10 +16,8 @@ CREATE TABLE threads
  threads_title VARCHAR(50)  NOT NULL,
  user_id  VARCHAR(100) NOT NULL,
  threads_date   DATE 	       NOT NULL,
- comments_id      VARCHAR(100) NOT NULL,
  PRIMARY KEY(threads_id),
- FOREIGN KEY(user_id)REFERENCES users(user_id),
- FOREIGN KEY(comments_id)REFERENCES comments(comments_id)
+ FOREIGN KEY(user_id)REFERENCES users(user_id)
 );
 
 
@@ -28,7 +26,7 @@ CREATE TABLE threads
 CREATE TABLE comments
 (comments_id 	  VARCHAR(100) NOT NULL,
  threads_id 	  VARCHAR(100) NOT NULL,
- user_mail	  VARCHAR(100)	 NOT NULL,
+ user_id	  VARCHAR(100)	 NOT NULL,
  post_date	  DATE		 NOT NULL,
  PRIMARY KEY(comments_id),
  FOREIGN KEY(threads_id)REFERENCES threads(threads_id),
