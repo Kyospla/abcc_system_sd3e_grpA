@@ -14,7 +14,7 @@ CREATE TABLE users
 CREATE TABLE threads
 (threads_id   INT AUTO_INCREMENT NOT NULL,
  threads_title VARCHAR(50)  NOT NULL,
- user_id  VARCHAR(100) NOT NULL,
+ user_id  INT(11) NOT NULL,
  threads_date   DATE 	       NOT NULL,
  PRIMARY KEY(threads_id),
  FOREIGN KEY(user_id)REFERENCES users(user_id)
@@ -25,8 +25,8 @@ CREATE TABLE threads
 3 コメント情報
 CREATE TABLE comments
 (comments_id 	  INT AUTO_INCREMENT NOT NULL,
- threads_id 	  VARCHAR(100) NOT NULL,
- user_id	  VARCHAR(100)	 NOT NULL,
+ threads_id 	  INT(11) NOT NULL,
+ user_id	  INT(11)	 NOT NULL,
  post_date	  DATE		 NOT NULL,
  PRIMARY KEY(comments_id),
  FOREIGN KEY(threads_id)REFERENCES threads(threads_id),
@@ -37,7 +37,7 @@ CREATE TABLE comments
 
 4 投稿履歴
 CREATE TABLE Post_historys
-(user_id VARCHAR(100) NOT NULL,
+(user_id INT(11) NOT NULL,
  history_id INT AUTO_INCREMENT NOT NULL,
  PRIMARY KEY(history_id),
  FOREIGN KEY(user_id) REFERENCES users(user_id)
