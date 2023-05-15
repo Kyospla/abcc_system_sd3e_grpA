@@ -1,0 +1,17 @@
+.inputbox{
+    width: 30%;
+    height: auto;
+    padding: 4px;
+    /* text-align: center; */
+    font-size: 15px;
+}
+
+.error{
+    color: red;
+    font-size: 5px;
+    font-weight:bold;
+}
+
+.btn{
+    font-weight:bold;
+}
