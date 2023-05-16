@@ -19,3 +19,11 @@
   a.name:hover{
     color: #0000cd;
   }
+
+  .thred-link{
+    text-decoration: none;
+    color: #000000;
+  }
+  a.thred-link:hover{
+    color: #0000cd;
+  }
