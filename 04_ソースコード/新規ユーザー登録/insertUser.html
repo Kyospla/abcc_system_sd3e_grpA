@@ -58,7 +58,7 @@
             <div class="col-7">
                 <input type="text" class="inputbox" v-model="address2" name="address2" placeholder="例：2-12-32"/>
             </div>
-            <p v-if="isInValidaddress2" class="error offset-5 col-7">※番地を入力してください。<br>　半角英数字1～9と半角記号-のみしか使えません。</p>
+            <p v-if="isInValidaddress2" class="error offset-5 col-7">※番地を入力してください。<br>　半角数字と半角記号-のみしか使えません。</p>
 
             <div class="col-5">
                 <h3 class="text-end">電話番号:</h3>
@@ -75,15 +75,15 @@
                 <input type="email" class="inputbox" v-model="mail" name="mail" placeholder="name@example.com"/>
             </div>
             <p v-if="isInValidaMail" class="error offset-5 col-7">※メールアドレスを入力してください。</p>
-
+            
+            <p class="textmessage">半角英数字と記号（.?/-@）のみ使用可能</p>
             <div class="col-5">
                 <h3 class="text-end">パスワード:</h3>
             </div>
             <div class="col-7">
-                <input type="password" class="inputbox" v-model="pass" name="pass"/>
+                <input type="password" class="inputbox" v-model="pass" name="pass" placeholder="パスワードを入力"/>
             </div>
-            <p v-if="isInValidaPass" class="error offset-5 col-7">※パスワードを8文字以上24文字以内で入力してください。<br>　半角英子文字、半角英大文字、半角英数字、記号（.?/-@）のみ使用可能</p>
-
+            <p v-if="isInValidaPass" class="error offset-5 col-7">※パスワードを8文字以上24文字以内で入力してください。</p>
             <div class="col-5">
                 <h3 class="text-end">パスワード再確認:</h3>
             </div>
