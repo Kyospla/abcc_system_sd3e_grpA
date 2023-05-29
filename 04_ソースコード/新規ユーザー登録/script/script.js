@@ -3,7 +3,7 @@ new Vue({
     data(){
         return{
             name: '',
-            nikku: '',
+            nikku: '名無しさん',
             address:'',
             address2: '',
             tel:'',
