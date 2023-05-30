@@ -21,7 +21,8 @@ new Vue({
             return this.nikku.length < 1;
         },
         isInValidPost(){
-            return this.post.length != 8;
+            const post =  /^[0-9]{3}-[0-9]{4}$/;
+            return !post.test(this.post);
         },
         isInValidaddress(){
             return this.address.length < 1;
