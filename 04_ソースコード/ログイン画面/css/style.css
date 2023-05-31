@@ -1,0 +1,15 @@
+.textbtn{
+    font-size: 15px;
+    font-weight:bold;
+}
+
+p{
+    font-size: 15px;
+    font-weight:bold;
+}
+
+.error{
+    font-weight:bold;
+    color: red;
+    font-size: 18px;
+}
