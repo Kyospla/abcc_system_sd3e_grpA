@@ -1,0 +1,19 @@
+.moji{
+    color: #000000;
+  }
+
+  .nav-item{
+    font-size: 20px;
+    font-weight: bold;
+  }
+/* nameクラスの文字の大きさや太さ、位置配置、リンクの線を消すなど */
+  .name{
+    margin-right: 1em;
+    font-size: 17px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000000;
+  }
+
+  /* aリンクのclassの名前がnameの場合カーソルを合わせると色が変わる */
+  
