@@ -3,3 +3,13 @@
     text-justify: inter-ideograph; /* IE用 */
     text-align-last: justify;
   }
+
+.box{
+  border:none;
+  background: #e7edf8;
+  width: 30%;
+  height: auto;
+  padding: 4px;
+  font-size: 18px;
+  font-weight:bold;
+}
