@@ -14,7 +14,7 @@
 <body>
   <?php
     session_start();
-    if(isset($_SESSION['name']) == false || isset($_SESSION['pass']) == false){
+    if(isset($_SESSION['name']) == false || isset($_SESSION['id']) == false){
       header('Location:../ログイン画面/login.php');
     }
   ?>  
@@ -58,71 +58,79 @@
 
       <?php
         $pdo = new PDO('mysql:host=mysql213.phy.lolipop.lan;dbname=LAA1418543-hiroyuki;charset=utf8','LAA1418543', '12345hiroyuki');
-        $sql="SELECT * FROM users WHERE user_name = ?";
+        $sql="SELECT * FROM users WHERE user_id = ?";
         $ps = $pdo ->prepare($sql);
         $ps -> bindValue(1,$_SESSION['name'],PDO::PARAM_STR);
         $ps -> execute();
+        $result = $ps -> fetchAll();
       ?>
       
         <div class="row">
-          <form action="../プロフィール修正/profilefix.php" method="post">
+          
+          <form action="../プロフィール修正/Profilefix.php" method="post">
+          <?php 
+           foreach($result as $row){
+          ?>
             <div class="col-5">
               <h3 class="text-end">氏名:</h3>
             </div>
             <div class="col-7">
-                <input type="text" class="box"  name="name"  value="<?php ?>" readonly>
+                <input type="text" class="box"  name="name"  value="<?php echo $row['user_name']?>" readonly>
             </div>
 
             <div class="col-5">
               <h3 class="text-end">ニックネーム:</h3>
             </div>
             <div class="col-7">
-                <input type="text" class="box"  name="nikku" value="加藤純一" readonly>
+                <input type="text" class="box"  name="nikku" value="<?php echo $row['user_niku']?>" readonly>
             </div>
 
             <div class="col-5">
               <h3 class="text-end">〒:</h3>
             </div>
             <div class="col-7">
-                <input type="text" class="box"  name="post" value="810-0000" readonly>
+                <input type="text" class="box"  name="post" value="<?php echo $row['user_zip']?>" readonly>
             </div>
 
             <div class="col-5">
               <h3 class="text-end">住所:</h3>
             </div>
             <div class="col-7">
-                <input type="text" class="box"  name="address" value="福岡県福岡市博多区博多駅南" readonly>
+                <input type="text" class="box"  name="address" value="<?php echo $row['user_address']?>" readonly>
             </div>
 
             <div class="col-5">
               <h3 class="text-end">番地:</h3>
             </div>
             <div class="col-7">
-                <input type="text" class="box"  name="address2" value="2-12-35" readonly>
+                <input type="text" class="box"  name="address2" value="<?php echo $row['user_banchi']?>" readonly>
             </div>
 
             <div class="col-5">
               <h3 class="text-end">電話番号:</h3>
             </div>
             <div class="col-7">
-                <input type="tel" class="box"  name="tel" value="08012345678" readonly>
+                <input type="tel" class="box"  name="tel" value="<?php echo $row['user_number']?>" readonly>
             </div>
 
             <div class="col-5">
               <h3 class="text-end">メールアドレス:</h3>
             </div>
             <div class="col-7">
-                <input type="email" class="box"  name="mail" value="2100000@s.asojuku.ac.jp" readonly>
+                <input type="email" class="box"  name="mail" value="<?php echo $row['user_mail']?>" readonly>
             </div>
 
             <div class="col-5">
               <h3 class="text-end">パスワード:</h3>
             </div>
             <div class="col-7">
-                <input type="password" class="box"  name="pass" value="abcdefghijk" readonly>
-                <input type="submit" href="" class="btn btn-warning text-white" value="変更する">
+                <input type="password" class="box"  name="pass" value="<?php echo $row['user_pass']?>" readonly>
+                <input type="submit" href="../プロフィール修正/CheckPass.php" class="btn btn-warning text-white" value="変更する">
             </div>
             <input type="submit"  class="btn btn-primary mt-3 offset-5 col-2" value="修正する">
+            <?php 
+              }
+            ?>
           </form>
         </div>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
