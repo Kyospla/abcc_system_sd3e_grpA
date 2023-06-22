@@ -1,5 +1,7 @@
 <?php
+    //セッションスタート
     session_start();
+    //ログインされていない場合はログイン画面に遷移する。
     if(isset($_SESSION['name']) == false || isset($_SESSION['id']) == false){
         header('Location:../ログイン画面/login.php');
     }
@@ -66,7 +68,11 @@
         $ps->bindValue(7, $_POST['mail'], PDO::PARAM_STR);
         $ps->bindvalue(8,$_SESSION['id'],PDO::PARAM_INT);
         $ps->execute();
-        header('Location:./ProfileCheck.php');
+
+        //セッション内容を破棄する。
+        unset($_SESSION['errormsg']);
+        //プロフィールの更新ができた場合は、Profilefix.phpに遷移する。
+        header('Location:./ProfileRegist.php');
         
 
     //チェックNGの場合の処理
