@@ -3,7 +3,7 @@
     if(isset($_SESSION['name']) == false || isset($_SESSION['id']) == false){
         header('Location:../ログイン画面/login.php');
     }
-
+    //エラーがあった場合に$_SESSION['errormsg']に文字が格納されていく。$cntはエラーのカウント数を示している。
     $_SESSION['errormsg'] = "";
     $cnt = 0;
 
