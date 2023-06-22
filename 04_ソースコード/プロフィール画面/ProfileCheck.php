@@ -52,9 +52,16 @@
 
     //チェックOKの場合の処理
     if($cnt == 0){
-        //DB接続しデータを格納する。
+        //DB接続し更新するユーザデータを格納する。
         $pdo = new PDO('mysql:host=mysql213.phy.lolipop.lan;dbname=LAA1418543-hiroyuki;charset=utf8','LAA1418543', '12345hiroyuki');
-        $sql="SELECT * FROM users WHERE user_id = ?";
+        $sql="UPDATE users SET user_name = ?,user_niku = ?,user_zip = ?,user_address = ?,user_banchi = ?,user_number = ?,user_mail = ? WHERE user_id = ?";
+        $ps = $pdo -> prepare($sql);
+        //1～7はPOSTで代入する　8はuser_idをSESSIONで代入
+        $ps->bindValue(1, $_POST['name'], PDO::PARAM_STR);
+        $ps->bindValue(2, $_POST['nikku'], PDO::PARAM_STR);
+        $ps->bindValue(3, $_POST['post'], PDO::PARAM_STR);
+        
+
     //チェックNGの場合の処理
     }else{
         //エラーメッセージをProfilefix.phpに表示させる。
