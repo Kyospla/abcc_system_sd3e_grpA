@@ -1,6 +1,3 @@
- HEAD
-
-
 .moji{
     color: #000000;
   }
@@ -19,30 +16,4 @@
   }
 
   /* aリンクのclassの名前がnameの場合カーソルを合わせると色が変わる */
-  a.name:hover{
-    color: #0000cd;
-  }
-
-  .thred-link{
-    text-decoration: none;
-    color: #000000;
-  }
-  a.thred-link:hover{
-    color: #0000cd;
-  }
-
-  .zikan{
-    margin-left: 5%;
-  }
-  .text{
-     background-color: #ffffff; 
-  }
- HEAD
-
-  .error{
-    color: red;
-  }
-
   
-
-
