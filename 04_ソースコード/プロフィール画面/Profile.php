@@ -60,7 +60,7 @@
         $pdo = new PDO('mysql:host=mysql213.phy.lolipop.lan;dbname=LAA1418543-hiroyuki;charset=utf8','LAA1418543', '12345hiroyuki');
         $sql="SELECT * FROM users WHERE user_id = ?";
         $ps = $pdo ->prepare($sql);
-        $ps -> bindValue(1,$_SESSION['name'],PDO::PARAM_STR);
+        $ps -> bindValue(1,$_SESSION['id'],PDO::PARAM_STR);
         $ps -> execute();
         $result = $ps -> fetchAll();
       ?>
