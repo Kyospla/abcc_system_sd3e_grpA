@@ -31,18 +31,18 @@
             <a class="nav-link active" aria-current="page" href="./catalog.html"><font size="5">トップ</font></a>
           </li> -->
           <li class="nav-item">
-            <a class="text-black nav-link" href="../トップ画面/top.php">情報共有掲示板</a>
+            <a class="text-black nav-link" href="../トップ画面/Top.php">情報共有掲示板</a>
           </li>
           <li class="nav-item">
             <a class="text-black nav-link" href="../投稿/Post.php">投稿</a>
           </li>
           <li class="nav-item">
-            <a class="text-black nav-link " href="../投稿/history.php">投稿履歴</a>
+            <a class="text-black nav-link " href="../投稿/History.php">投稿履歴</a>
           </li>
         </ul>
         <a href="../プロフィール修正/Profile.php" class="name"><?php echo $_SESSION['name'] ?></a>
-        <form role="search">
-          <input class="form-control" type="search" placeholder="タイトル検索" aria-label="Search">
+        <form role="search" action="../トップ画面/Search.php" method="post">
+          <input class="form-control" type="search" placeholder="タイトル検索" aria-label="Search" name="search">
         </form>
       </div>
     </div>
@@ -60,7 +60,7 @@
         $pdo = new PDO('mysql:host=mysql213.phy.lolipop.lan;dbname=LAA1418543-hiroyuki;charset=utf8','LAA1418543', '12345hiroyuki');
         $sql="SELECT * FROM users WHERE user_id = ?";
         $ps = $pdo ->prepare($sql);
-        $ps -> bindValue(1,$_SESSION['name'],PDO::PARAM_STR);
+        $ps -> bindValue(1,$_SESSION['id'],PDO::PARAM_STR);
         $ps -> execute();
         $result = $ps -> fetchAll();
       ?>
