@@ -48,6 +48,16 @@
       </div>
     </div>
   </nav>
+
+      <?php
+        $pdo = new PDO('mysql:host=mysql213.phy.lolipop.lan;dbname=LAA1418543-hiroyuki;charset=utf8','LAA1418543', '12345hiroyuki');
+        $sql="SELECT * FROM users WHERE user_id = ?";
+        $ps = $pdo ->prepare($sql);
+        $ps -> bindValue(1,$_SESSION['id'],PDO::PARAM_STR);
+        $ps -> execute();
+        $result = $ps -> fetchAll();
+      ?>
+
       <div class = "row">
         <div class = "col-5 text-end">
           <h1 class="mb-2 mt-3">プロフィール</h1>
@@ -56,80 +66,69 @@
       </div>
       <div class="row">
         <div class="offset-5 col-5">
-            <p class="error">エラーメッセージ</p>
+            <p class="error">
+              <?php
+                if(isset($_SESSION['errormsg'])){
+                  echo $_SESSION['errormsg'];
+                  unset($_SESSION['errormsg']);
+                }
+              ?>
+            </p>
         </div>
-        <div class="col-5">
-          <h3 class="text-end">氏名:</h3>
-        </div>
-        <div class="col-7">
-            <input type="text" class="box"  name="name"  value="加藤純一" >
-        </div>
+        <form action="../プロフィール画面/ProfileCheck.php" method="post">
+          <div class="col-5">
+            <h3 class="text-end">氏名:</h3>
+          </div>
+          <div class="col-7">
+              <input type="text" class="box"  name="name"  value="<?php echo $row['user_name']?>" >
+          </div>
 
-        <div class="col-5">
-          <h3 class="text-end">ニックネーム:</h3>
-        </div>
-        <div class="col-7">
-            <input type="text" class="box"  name="nikku" value="加藤純一">
-        </div>
+          <div class="col-5">
+            <h3 class="text-end">ニックネーム:</h3>
+          </div>
+          <div class="col-7">
+              <input type="text" class="box"  name="nikku" value="<?php echo $row['user_niku']?>">
+          </div>
 
-        <div class="col-5">
-          <h3 class="text-end">〒:</h3>
-        </div>
-        <div class="col-7">
-            <input type="text" class="box"  name="post" value="810-0000">
-        </div>
+          <div class="col-5">
+            <h3 class="text-end">〒:</h3>
+          </div>
+          <div class="col-7">
+              <input type="text" class="box"  name="post" value="<?php echo $row['user_zip']?>">
+          </div>
 
-        <div class="col-5">
-          <h3 class="text-end">住所:</h3>
-        </div>
-        <div class="col-7">
-            <input type="text" class="box"  name="address" value="福岡県福岡市博多区博多駅南">
-        </div>
+          <div class="col-5">
+            <h3 class="text-end">住所:</h3>
+          </div>
+          <div class="col-7">
+              <input type="text" class="box"  name="address" value="<?php echo $row['user_address']?>">
+          </div>
 
-        <div class="col-5">
-          <h3 class="text-end">番地:</h3>
-        </div>
-        <div class="col-7">
-            <input type="text" class="box"  name="address2" value="2-12-35">
-        </div>
+          <div class="col-5">
+            <h3 class="text-end">番地:</h3>
+          </div>
+          <div class="col-7">
+              <input type="text" class="box"  name="address2" value="<?php echo $row['user_banchi']?>">
+          </div>
 
-        <div class="col-5">
-          <h3 class="text-end">電話番号:</h3>
-        </div>
-        <div class="col-7">
-            <input type="tel" class="box"  name="tel" value="08012345678">
-        </div>
+          <div class="col-5">
+            <h3 class="text-end">電話番号:</h3>
+          </div>
+          <div class="col-7">
+              <input type="tel" class="box"  name="tel" value="<?php echo $row['user_number']?>">
+          </div>
 
-        <div class="col-5">
-          <h3 class="text-end">メールアドレス:</h3>
+          <div class="col-5">
+            <h3 class="text-end">メールアドレス:</h3>
+          </div>
+          <div class="col-7">
+              <input type="email" class="box"  name="mail" value="<?php echo $row['user_mail']?>">
+          </div>
+        </form>
+        <div class="btn">
+          <button class="offset-1 col-2 " value="戻る">戻る</button>
+          <input type="submit"  class="btn btn-primary mt-3 offset-1 col-2"  value="更新する">
         </div>
-        <div class="col-7">
-            <input type="email" class="box"  name="mail" value="2100000@s.asojuku.ac.jp">
-        </div>
-        
-        
-        
-
-        <!-- <a href="./index.html"><h3>パスワード変更</h3></a> -->
-
-       
-
-    <div class="btn">
-        <button class="offset-1 col-2 " value="戻る">戻る</button>
-        <input type="submit"  class="btn btn-primary mt-3 offset-1 col-2"  value="更新する">
-        </div>
-      </div>
-
-     <!-- <div>
-     
-          <h1>氏名：</h1>
-          <h1>ニックネーム：</h1>
-          <h1>住所：</h1>
-          <h1>番地：</h1>
-          <h1>電話番号：</h1>
-          <h1>メールアドレス：</h1>
-          <h1>パスワード：</h1>
-</div> -->
-        
+      </div>        
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
