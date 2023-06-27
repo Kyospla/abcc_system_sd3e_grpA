@@ -12,6 +12,12 @@
 <title>プロフィール修正画面</title>
 </head>
 <body>
+<?php
+    session_start();
+    if(isset($_SESSION['name']) == false || isset($_SESSION['id']) == false){
+      header('Location:../ログイン画面/login.php');
+    }
+  ?>
     
   <nav class="navbar navbar-expand-md navbar-dark" aria-label="Fourth navbar example" style="background-color:#76FF60">
     <div class="container-fluid">
@@ -26,16 +32,16 @@
             <a class="nav-link active" aria-current="page" href="./catalog.html"><font size="5">トップ</font></a>
           </li> -->
           <li class="nav-item">
-            <a class="text-black nav-link" href="#">情報共有掲示板</a>
+            <a class="text-black nav-link" href="../トップ画面/Top.php">情報共有掲示板</a>
           </li>
           <li class="nav-item">
-            <a class="text-black nav-link" href="#">投稿</a>
+            <a class="text-black nav-link" href="../投稿/Post.php">投稿</a>
           </li>
           <li class="nav-item">
-            <a class="text-black nav-link " href="./login.html">投稿履歴</a>
+            <a class="text-black nav-link " href="../投稿/History.php">投稿履歴</a>
           </li>
         </ul>
-        <a href="#" class="name">名無しさん</a>
+        <a href="#" class="name"><?php echo $_SESSION['name'] ?></a>
         <form role="search">
           <input class="form-control" type="search" placeholder="タイトル検索" aria-label="Search">
         </form>

@@ -31,13 +31,13 @@
             <a class="nav-link active" aria-current="page" href="./catalog.html"><font size="5">トップ</font></a>
           </li> -->
           <li class="nav-item">
-            <a class="text-black nav-link" href="../トップ画面/top.php">情報共有掲示板</a>
+            <a class="text-black nav-link" href="../トップ画面/Top.php">情報共有掲示板</a>
           </li>
           <li class="nav-item">
             <a class="text-black nav-link" href="../投稿/Post.php">投稿</a>
           </li>
           <li class="nav-item">
-            <a class="text-black nav-link " href="../投稿/history.php">投稿履歴</a>
+            <a class="text-black nav-link " href="../投稿/History.php">投稿履歴</a>
           </li>
         </ul>
         <a href="../プロフィール修正/Profile.php" class="name"><?php echo $_SESSION['name'] ?></a>
