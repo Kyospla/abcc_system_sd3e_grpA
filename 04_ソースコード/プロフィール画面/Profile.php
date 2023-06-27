@@ -41,7 +41,7 @@
           </li>
         </ul>
         <a href="../プロフィール修正/Profile.php" class="name"><?php echo $_SESSION['name'] ?></a>
-        <form role="search">
+        <form role="search" action="../トップ画面/Search.php" method="post">
           <input class="form-control" type="search" placeholder="タイトル検索" aria-label="Search" name="search">
         </form>
       </div>
