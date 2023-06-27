@@ -42,7 +42,7 @@
         </ul>
         <a href="../プロフィール修正/Profile.php" class="name"><?php echo $_SESSION['name'] ?></a>
         <form role="search">
-          <input class="form-control" type="search" placeholder="タイトル検索" aria-label="Search">
+          <input class="form-control" type="search" placeholder="タイトル検索" aria-label="Search" name="search">
         </form>
       </div>
     </div>
