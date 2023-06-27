@@ -17,7 +17,7 @@
     if(isset($_SESSION['name']) == false || isset($_SESSION['id']) == false){
       header('Location:../ログイン画面/login.php');
     }
-  ?>
+?>
     
   <nav class="navbar navbar-expand-md navbar-dark" aria-label="Fourth navbar example" style="background-color:#76FF60">
     <div class="container-fluid">
@@ -41,7 +41,7 @@
             <a class="text-black nav-link " href="../投稿/History.php">投稿履歴</a>
           </li>
         </ul>
-        <a href="#" class="name"><?php echo $_SESSION['name'] ?></a>
+        <a href="../プロフィール画面/Profile.php" class="name"><?php echo $_SESSION['name'] ?></a>
         <form role="search">
           <input class="form-control" type="search" placeholder="タイトル検索" aria-label="Search">
         </form>
@@ -132,3 +132,4 @@
       </div>        
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
+</html>
