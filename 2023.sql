@@ -8,6 +8,7 @@ CREATE TABLE users
  user_address   VARCHAR(100)    NOT NULL,
  user_number    VARCHAR(20)     NOT NULL,
  user_zip       CHAR(8)         NOT NULL,
+ user_banchi    VARCHAR(8)      NOT NULL,
  PRIMARY KEY(user_id)
 );
 
