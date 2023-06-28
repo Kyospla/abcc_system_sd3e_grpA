@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -47,23 +46,46 @@
         <hr class="offset-2 col-8" size="4"noshade>
      </div>
         <div class="card offset-2 col-8 offset-2 card-box mt-2">
-<?php
-$pdo = new PDO('mysql:host=localhost;dbname=hiroyuki;charset=utf8',
-'root', 'root');
+          <?php
+            // データベースへの接続
+            $servername = "mysql213.phy.lolipop.lan";
+            $username = "LAA1418543";
+            $password = "12345hiroyuki";
+            $dbname = "LAA1418543-hiroyuki";
 
-$sql="SELECT * FROM comments JOIN threads ON comments.threads_id = threads.threads_id
-ORDER BY comments_id DESC";
-$selectData = $pdo->query($sql);
+            // 接続を作成
+            $conn = new mysqli($servername, $username, $password, $dbname);
 
-foreach($selectData as $row){
-    echo 'スレッド名:',$row['threads_title']."<br>";
-    echo '投稿日:',$row['post_date']."<br>";
-    echo 'コメント:',$row['comment']."<br>";
-    echo"--------------------------<br>";
-}
-?>
-            </div>
+            // 接続を確認
+            if ($conn->connect_error) {
+              die("データベースに接続できませんでした: " . $conn->connect_error);
+            }
+
+            // 投稿履歴の取得
+            $sql = "SELECT * FROM comments ORDER BY post_date DESC";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+              // 投稿履歴がある場合は表示
+              while($row = $result->fetch_assoc()) {
+                $author = $row["投稿者"];
+                $content = $row["投稿内容"];
+                $timestamp = $row["投稿日時"];
+                echo "<div class='card-body'>";
+                echo "<h5 class='card-title'>投稿者: " . $author . "</h5>";
+                echo "<p class='card-text'>投稿内容: " . $content . "</p>";
+                echo "<p class='card-text'>投稿日時: " . $timestamp . "</p>";
+                echo "</div>";
+              }
+            } else {
+              echo "<p>投稿履歴はありません。</p>";
+            }
+
+            // 接続を閉じる
+            $conn->close();
+          ?>
           </a>
         </div>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
      </body>
+</html>
