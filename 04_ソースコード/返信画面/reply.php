@@ -39,22 +39,17 @@
       </div>
     </div>
   </nav>
-<div class="row">
-    <h5 class="mt-4 offset-1 col-11">ニックネーム <span class="text-end offset-7 col-5">2023年4月13日 (木) 10:00</span></h5>
-    <h1 class="mt-1 offset-1">新卒sesってどう？</h1>
-    <p class="mt-3 offset-1">実際はどうなの？</p>
-</div>
-<hr>
-<div class="row">
-  <h5 class="mt-0 offset-1 col-11">加藤純一 <span class="text-end offset-7 col-5">2023年4月13日 (木) 10:00</span></h5>
-    <p class="mt-2 offset-1">結構いいですよ</p>
-  </div>
   <hr>
- <div class="offset-1 col-10">
-  <label  for="txt2"  class="form-label">返信</label>
-  <textarea type="text"  name="messege" class="form-control" id="txt2" placeholder="" rows="3"></textarea>
-</div>
-  <input type="submit" class="mt-3 offset-7 col-3" value="返信する">
+  <div class="form-container"> 
+    <form method="post" action="reply_check.php">
+    <div class="offset-1 col-10">
+    <label  for="txt2"  class="form-label">返信</label>
+    <textarea id="content"   name="messege" class="form-control" id="txt2" placeholder="" rows="3" required></textarea>
+
+  </div>
+    <input type="submit" class="mt-3 offset-7 col-3" value="返信する">
+  </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
