@@ -55,8 +55,8 @@
         $ps -> execute();
         $searchArray = $ps -> fetchAll();
       ?>
-      <div class = "row">
-      <?php 
+        <div class = "row">
+          <?php 
            foreach($searchArray as $row){
           ?>
         <div class = "col-5 text-end">
@@ -64,6 +64,7 @@
         </div>
         <div class="col-3 text-end mt-3 ">
           <input type="submit" class="btn btn-danger" value="ログアウト">
+          <button class="btn btn-danger" onclick="location.href='../ログイン画面/Logout.php'">ログアウト</button>
         </div>
       </div>
       <div class="row">
@@ -121,13 +122,13 @@
         </div>
         <div class="col-7">
             <input type="password" class="box"  name="pass" value="<?php echo $row['user_pass']?>" readonly>
-            <input type="submit" class="btn btn-warning text-white" value="変更する">
+            <button class="btn btn-warning text-white" onclick="location.href='../プロフィール修正/ChackPass.php'">変更する</button>
         </div>
-        <input type="submit"  class="btn btn-primary mt-3 offset-5 col-2" value="修正する">
+        <button class="btn btn-primary text-white offset-5 col-2 mt-3" onclick="location.href='../プロフィール修正/Profilefix.php'">修正する</button>
         <?php 
               }
             ?>
-    </div>
+        </div>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
