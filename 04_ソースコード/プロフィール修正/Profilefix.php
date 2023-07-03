@@ -13,10 +13,10 @@
 </head>
 <body>
   <?php
-    // session_start();
-    // if(isset($_SESSION['name']) == false || isset($_SESSION['id']) == false){
-    //   header('Location:../Login/Login.php');
-    // }
+    session_start();
+    if(isset($_SESSION['name']) == false || isset($_SESSION['id']) == false){
+      header('Location:../Login/Login.php');
+    }
   ?>
   <nav class="navbar navbar-expand-md navbar-dark" aria-label="Fourth navbar example" style="background-color:#76FF60">
     <div class="container-fluid">
@@ -30,27 +30,27 @@
             <a class="nav-link active" aria-current="page" href="./catalog.html"><font size="5">トップ</font></a>
           </li> -->
           <li class="nav-item">
-            <a class="text-black nav-link" href="../トップ画面/Top.php">情報共有掲示板</a>
+            <a class="text-black nav-link" href="../Top/Top.php">情報共有掲示板</a>
           </li>
           <li class="nav-item">
-            <a class="text-black nav-link" href="../投稿/Post.php">投稿</a>
+            <a class="text-black nav-link" href="../Post/Post.php">投稿</a>
           </li>
           <li class="nav-item">
-            <a class="text-black nav-link " href="../投稿履歴/History.php">投稿履歴</a>
+            <a class="text-black nav-link " href="../Post/History.php">投稿履歴</a>
           </li>
         </ul>
-        <a href="#" class="name">名無しさん</a>
-        <form role="search">
-          <input class="form-control" type="search" placeholder="タイトル検索" aria-label="Search">
+        <a href="../Profile/Profile.php" class="name"><?php echo $_SESSION['name'] ?></a>
+        <form role="search" action="../Top/Search.php" method="post">
+          <input class="form-control" type="search" placeholder="タイトル検索" aria-label="Search" name="search">
         </form>
       </div>
     </div>
   </nav>
       <?php
         $pdo = new PDO('mysql:host=mysql213.phy.lolipop.lan;dbname=LAA1418543-hiroyuki;charset=utf8','LAA1418543', '12345hiroyuki');
-        $sql="SELECT * FROM users WHERE user_id = 1";
+        $sql="SELECT * FROM users WHERE user_id = ?";
         $ps = $pdo ->prepare($sql);
-        //$ps -> bindValue(1,$_SESSION['id'],PDO::PARAM_STR);
+        $ps -> bindValue(1,$_SESSION['id'],PDO::PARAM_INT);
         $ps -> execute();
         $searchArray = $ps -> fetchAll();
       ?>
@@ -70,7 +70,7 @@
             <p class="error">
               <?php
                 if(isset($_SESSION['errormsg'])){
-                  echo $_SESSION['errormsg'];
+                  echo nl2br($_SESSION['errormsg']);
                   unset($_SESSION['errormsg']);
                 }
               ?>
