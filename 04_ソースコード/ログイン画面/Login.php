@@ -30,7 +30,7 @@
             }
             ?>
         </div>
-            <p class="error text-center mt-2">エラーメッセージを表示</p>
+            
             <div class="offset-4 col-4">
                 <label for="txt1" class="form-label mt-3 mb-0">メールアドレス</label>
                 <input type="text" class="form-control" id="txt1" placeholder="name@example.com" name="mail">
