@@ -30,7 +30,7 @@
             }
             ?>
         </div>
-            
+            <form action=".UserExist.php">
             <div class="offset-4 col-4">
                 <label for="txt1" class="form-label mt-3 mb-0">メールアドレス</label>
                 <input type="text" class="form-control" id="txt1" placeholder="name@example.com" name="mail">
@@ -41,6 +41,7 @@
             </div>
             <div class="row offset-4 col-4 mt-3">
                 <input type="submit" value="ログイン" class="btn btn-warning textbtn" name="login">
+        </form>
             </div>
             <div class="text-center mt-4">
                 <p>初めての方は<a href="../新規ユーザー登録/UserInput.html">こちらから</a></p>
