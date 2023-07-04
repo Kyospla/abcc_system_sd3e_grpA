@@ -10,14 +10,6 @@
     <title>投稿画面</title>
 </head>
 <body>
-
-  <?php
-    session_start();
-    if(isset($_SESSION['name']) == false || isset($_SESSION['id']) == false){
-      header('Location:../投稿画面/post.php');
-    }
-  ?>  
-
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Fourth navbar example" style="background-color:#76FF60">
         <div class="container-fluid">
           <!-- <a class="navbar-brand" href="#"><img src="../img/rogo b t.png" width="20%"></a> -->
@@ -47,19 +39,33 @@
           </div>
         </div>
       </nav>
+
+<form method="POST" action="<?php print($_SERVER['PHP_SELF']) ?>">
+
     <h1 class="offset-1 mt-2">情報共有掲示板</h1>
       <div class="offset-1 col-10 mt-3">
         <label  for="txt1"  class="form-label">タイトル</label>
-        <input type="text"  name="title" class="form-control" id="txt1" placeholder="タイトルを記入してください">
+        <input type="text"  name="personal_name" class="form-control" id="txt1" placeholder="タイトルを記入してください">
     </div>
     <div class="offset-1 col-10">
         <label  for="txt2"  class="form-label">投稿内容</label>
-        <textarea type="text"  name="messege" class="form-control" id="txt2" placeholder="投稿内容を記入してください" rows="3"></textarea>
+        <textarea type="text"  name="contents" class="form-control" id="txt2" placeholder="投稿内容を記入してください" rows="3"></textarea>
     </div>
         
 
-    
-        <input type="submit" class="mt-3 offset-8 col-3" value="投稿する">
+        <input type="submit" class="mt-3 offset-8 col-3" name="btn1" value="投稿する">
+</form>
+
+<?php
+
+$personal_name = $_POST['personal_name'];
+$contents = $_POST['contents'];
+
+print('<p>タイトル:'.$personal_name.'</p>');
+print('<p>内容:</p>');
+print('<p>'.$contents.'</p>');
+
+?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
