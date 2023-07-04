@@ -12,41 +12,45 @@
 <body>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Fourth navbar example" style="background-color:#76FF60">
     <div class="container-fluid">
-      <!-- <a class="navbar-brand" href="#"><img src="../img/rogo b t.png" width="20%"></a> -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
+      
       <div class="collapse navbar-collapse" id="navbarsExample04">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
-          <!-- <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="./catalog.html"><font size="5">トップ</font></a>
-          </li> -->
           <li class="nav-item">
-            <a class="text-black nav-link" href="#">情報共有掲示板</a>
+            <a class="text-black nav-link" href="../トップ画面/Top.php">情報共有掲示板</a>
           </li>
           <li class="nav-item">
-            <a class="text-black nav-link" href="#">投稿</a>
+            <a class="text-black nav-link" href="../投稿/Post.php">投稿</a>
           </li>
           <li class="nav-item">
-            <a class="text-black nav-link " href="./login.html">投稿履歴</a>
+            <a class="text-black nav-link " href="../投稿/History.php">投稿履歴</a>
           </li>
         </ul>
-        <a href="#" class="name">名無しさん</a>
-        <form role="search">
-          <input class="form-control" type="search" placeholder="タイトル検索" aria-label="Search">
+        <a href="../プロフィール画面/Profile.php" class="name">名無しさん</a>
+        <form role="search" action="../トップ画面/Search.php" method="post">
+          <input class="form-control" type="search" placeholder="タイトル検索" aria-label="Search" name="search">
         </form>
       </div>
     </div>
   </nav>
-<div class="row">
+  <?php
+    // $pdo = new PDO('mysql:host=mysql213.phy.lolipop.lan;dbname=LAA1418543-hiroyuki;charset=utf8','LAA1418543', '12345hiroyuki');
+    // $sql="SELECT * FROM threads ORDER BY threads_date DESC";
+  ?>
     <h1 class="mt-4 offset-1">検索結果</h1>
-    <h5 class="mt-2 offset-1">検索キーワード：キーワード名</h5>
-    <h5 class="mt-2 offset-1">件数：〇件</h5>
+    <h5 class="mt-2 offset-1">検索キーワード：<?php echo "ses"?></h5>
+    <h5 class="mt-2 offset-1">件数：<?php echo "1件"?></h5>
     <div class="card offset-1 col-10 card-box mt-3">
         <a href="#" class="thred-link">
           <div class="card-body">
-            <h5 class="nikku-name">ニックネーム<span class="zikan">2023年5月16日(火)18:02:34</span></h5>
+            <h5 class="nikku-name"><?php echo "加藤純一"?><span class="zikan">
+              <?php 
+              $timestamp = time() ;
+              date_default_timezone_set('Asia/Tokyo');
+              $week = array( "日", "月", "火", "水", "木", "金", "土" );
+               echo date("Y年n月d日(".$week[date("w")].") H:i",$timestamp)?></span></h5>
             <h2 class="card-title">新卒sesってどう？</h2>
           </div>
         </a>
