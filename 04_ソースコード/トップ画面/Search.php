@@ -10,6 +10,12 @@
     <title>検索結果画面</title>
 </head>
 <body>
+<?php
+    session_start();
+    if(isset($_SESSION['name']) == false || isset($_SESSION['id']) == false){
+      header('Location:../Login/Login.php');
+    }
+?>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Fourth navbar example" style="background-color:#76FF60">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +34,7 @@
             <a class="text-black nav-link " href="../History/History.php">投稿履歴</a>
           </li>
         </ul>
-        <a href="../Profile/Profile.php" class="name">名無しさん<?php //echo $_SESSION['name'] ?></a>
+        <a href="../Profile/Profile.php" class="name"><?php echo $_SESSION['name'] ?></a>
         <form role="search" action="./Search.php" method="post">
           <input class="form-control" type="search" placeholder="タイトル検索" aria-label="Search" name="search">
         </form>
@@ -56,8 +62,10 @@
         ?>
         <a href="../Reply/Reply.php?id=<?php echo $id ?>" class="thred-link">
           <div class="card-body">
-            <h5 class="nikku-name"><?php echo $row['user_niku']?><span class="zikan">2023年７月４日
+            <h5 class="nikku-name"><?php echo $row['user_niku']?><span class="zikan">
               <?php 
+              echo $row['threads_date']
+              //以下のコードはthreadsテーブルやcommentsテーブルの日付を入れるコードです。
               //echo $row['threads_data']
               // $timestamp = time() ;
               // date_default_timezone_set('Asia/Tokyo');
