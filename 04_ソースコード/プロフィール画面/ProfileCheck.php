@@ -73,6 +73,8 @@
 
         //セッション内容を破棄する。
         unset($_SESSION['errormsg']);
+        //氏名のセッションを更新する
+	    $_SESSION['name'] = $_POST['name'];
         //プロフィールの更新ができた場合は、Profilefix.phpに遷移する。
         header('Location:./ProfileRegist.php');
         
