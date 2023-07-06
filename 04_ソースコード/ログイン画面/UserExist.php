@@ -11,13 +11,13 @@ $pdo = new PDO('mysql:host=mysql213.phy.lolipop.lan;dbname=LAA1418543-hiroyuki;c
 
 $searchArray = $ps->fetchAll();
 foreach($searchArray as  $row){
-	$_SESSION['mail'] = $row['user_mail'];
-	$_SESSION['pass'] = $row['user_pass'];
-	header('Location:login.php');
+	$_SESSION['id'] = $row['user_id'];
+	$_SESSION['name'] = $row['user_name'];
+	header('Location:../Top/Top.php');
 }
 
 if(count($searchArray)==0){
 	$_SESSION['msg'] = "メールアドレスまたはパスワードが間違っています";
-	header('Location:login.php');
+	header('Location:Login.php');
 }
 ?>
