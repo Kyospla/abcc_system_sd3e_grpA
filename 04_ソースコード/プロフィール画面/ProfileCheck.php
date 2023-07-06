@@ -3,7 +3,7 @@
     session_start();
     //ログインされていない場合はログイン画面に遷移する。
     if(isset($_SESSION['name']) == false || isset($_SESSION['id']) == false){
-        header('Location:../ログイン画面/login.php');
+        header('Location:../Login/Login.php');
     }
     //エラーがあった場合に$_SESSION['errormsg']に文字が格納されていく。$cntはエラーのカウント数を示している。
     $_SESSION['errormsg'] = "";
@@ -73,6 +73,8 @@
 
         //セッション内容を破棄する。
         unset($_SESSION['errormsg']);
+        //氏名のセッションを更新する
+	    $_SESSION['name'] = $_POST['name'];
         //プロフィールの更新ができた場合は、Profilefix.phpに遷移する。
         header('Location:./ProfileRegist.php');
         
