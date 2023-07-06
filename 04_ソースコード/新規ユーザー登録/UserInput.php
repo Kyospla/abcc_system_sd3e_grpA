@@ -19,9 +19,6 @@
       </div>
       
       <div class="row">
-        <?php 
-           foreach($searchArray as $row){
-        ?>
         <div class="offset-5 col-5">
         <form action="./UserInput/UserCheck.php" method="post">
             <p class="error">
