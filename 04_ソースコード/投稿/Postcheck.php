@@ -1,24 +1,34 @@
 <?php
-    //   DBに接続
-    // xamp
-    //   $pdo = new PDO('mysql:host=localhost;dbname=hiroyuki;charset=utf8','LAA1418543', '12345hiroyuki');
-    // lolipop
-    // $pdo = new PDO('mysql:host=mysql213.phy.lolipop.lan;dbname=LAA1418543-hiroyuki;charset=utf8','LAA1418543', '12345hiroyuki');
+// データベースへの接続
+$servername = "mysql213.phy.lolipop.lan";
+$username = "LAA1418543";
+$password = "12345hiroyuki";
+$dbname = "LAA1418543-hiroyuki";
 
-    $pdo = new PDO('mysql:host=localhost;dbname=hiroyuki;charset=utf8','LAA1418543', '12345hiroyuki');
-    $sql = "INSERT INTO thread(threads_title,user_id,threads_date)VALUES(?,?,?)";
-    $ps = $pdo -> prepare($sql);
-    
-    $ps->bindValue(1, $_POST['titele'], PDO::PARAM_STR);
-    $ps->bindValue(2,"1", PDO::PARAM_STR);
-    $ps->bindValue(3, $dayStr, PDO::PARAM_STR);
-    $dayStr = date("Y/m/d");
-    
-    $ps->execute();
+// 接続を作成
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-    // タイトルとコメント表示
-    // $selectSQL = "SELECT * FROM thtead";
-    // $selectdata = $pdo->query($selectSQL);
-    // echo "タイトル：".$_POST['title']."<br>";
-    // echo "コメント：".$_POST['comment']."<br>";
+// 接続を確認
+if ($conn->connect_error) {
+    die("データベースに接続できませんでした: " . $conn->connect_error);
+}
+// echo "MySQLデータベースへの接続に成功しました！";
+
+// 投稿フォームからのデータを取得
+$threadTitle = $_POST['thread_title'];
+$commentText = $_POST['comment'];
+
+// スレッドをthreadsテーブルに挿入
+$sql = "INSERT INTO threads (threads_title, user_id, threads_date) VALUES ('$threadTitle', 1, CURDATE())";
+$conn->query($sql);
+
+// 直前に挿入されたスレッドのIDを取得
+$threadId = $conn->insert_id;
+
+// コメントをcommentsテーブルに挿入
+$sql = "INSERT INTO comments (threads_id, user_id, post_date, comment) VALUES ($threadId, 1, CURDATE(), '$commentText')";
+$conn->query($sql);
+
+// 接続を閉じる
+$conn->close();
 ?>
