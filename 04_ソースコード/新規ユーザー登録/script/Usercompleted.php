@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="../プロフィール画面/css/style.css">
-<title>新規ユーザー登録画面</title>
+<title>新規ユーザー登録完了画面</title>
 </head>
 <body>
 
@@ -39,37 +39,17 @@
     </div>
   </nav>
 
+  <?php
+    session_start();
 
-<h1 style="text-align:center;margin-top: 2em;margin-bottom: 1em;" class="h1_log">新規ユーザー登録</h1>
-    <form method="post" action="register.php">
-        <label for="username">氏名:</label>
-        <input type="text" name="username" id="username" required><br><br>
+    $username = $_SESSION['username'];
 
-        <label for="userniku">ニックネーム:</label>
-        <input type="text" name="userniku" id="userniku" required><br><br>
+    if (!empty($username)) {
+        echo '<p>ユーザー名: ' . $username . '</p>';
+    }
+    ?>
 
-        <label for="userzip">〒:</label>
-        <input type="text" name="userzip" id="userzip" required><br><br>
-
-        <label for="useraddress">住所:</label>
-        <input type="text" name="useraddress" id="useraddress" required><br><br>
-        
-        <label for="useraddress">番地:</label>
-        <input type="text" name="useraddress" id="useraddress" required><br><br>
-
-        <label for="usernumber">電話番号:</label>
-        <input type="text" name="usernumber" id="usernumber" required><br><br>
-
-        <label for="usermail">メールアドレス:</label>
-        <input type="mail" name="usermail" id="usermail" required><br><br>
-
-        <label for="userpass">パスワード:</label>
-        <input type="userpass" name="userpass" id="userpass" required><br><br>
-        
-        <label for="userpass">パスワード再確認:</label>
-        <input type="userpass" name="userpass" id="userpass" required><br><br>
-
-        <input type="submit" value="登録">
-    </form>
+    <p>ユーザー登録完了</p>
+        <a href="login.php">ログイン画面へ</a>
 </body>
 </html>
