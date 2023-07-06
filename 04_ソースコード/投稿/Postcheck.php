@@ -1,30 +1,24 @@
 <?php
-    //タイトルが未入力だった場合の処理
-    if(strlen($_POST['title']) < 1){
-        $_SESSION['errormsg'] .= "タイトルを入力してください\n";
-        $cnt++;
-    }
+    //   DBに接続
+    // xamp
+    //   $pdo = new PDO('mysql:host=localhost;dbname=hiroyuki;charset=utf8','LAA1418543', '12345hiroyuki');
+    // lolipop
+    // $pdo = new PDO('mysql:host=mysql213.phy.lolipop.lan;dbname=LAA1418543-hiroyuki;charset=utf8','LAA1418543', '12345hiroyuki');
 
-    //投稿内容が未入力だった場合の処理
-    if(strlen($_POST['post']) < 1){
-        $_SESSION['errormsg'] .= "投稿内容を入力してください。\n";
-        $cnt++;
-    }
+    $pdo = new PDO('mysql:host=localhost;dbname=hiroyuki;charset=utf8','LAA1418543', '12345hiroyuki');
+    $sql = "INSERT INTO thread(threads_title,user_id,threads_date)VALUES(?,?,?)";
+    $ps = $pdo -> prepare($sql);
+    
+    $ps->bindValue(1, $_POST['titele'], PDO::PARAM_STR);
+    $ps->bindValue(2,"1", PDO::PARAM_STR);
+    $ps->bindValue(3, $dayStr, PDO::PARAM_STR);
+    $dayStr = date("Y/m/d");
+    
+    $ps->execute();
 
-    //チェックOKの場合の処理
-    if($cnt == 0){
-        //DB接続し更新するユーザデータを格納する。
-        $pdo = new PDO('mysql:host=mysql213.phy.lolipop.lan;dbname=LAA1418543-hiroyuki;charset=utf8','LAA1418543', '12345hiroyuki');
-        $sql="UPDATE users SET user_name = ?,user_niku = ?,user_zip = ?,user_address = ?,user_banchi = ?,user_number = ?,user_mail = ? WHERE user_id = ?";
-        $ps = $pdo -> prepare($sql);
-        //1,2はPOSTで代入する
-        $ps->bindValue(1, $_POST['title'], PDO::PARAM_STR);
-        $ps->bindValue(2, $_POST['post'], PDO::PARAM_STR);
-        $ps->execute();
-
-    //チェックNGの場合の処理
-    }else{
-        //エラーメッセージをProfilefix.phpに表示させる。
-        header('Location:../ProfileChange/Profilefix.php');
-    }
+    // タイトルとコメント表示
+    // $selectSQL = "SELECT * FROM thtead";
+    // $selectdata = $pdo->query($selectSQL);
+    // echo "タイトル：".$_POST['title']."<br>";
+    // echo "コメント：".$_POST['comment']."<br>";
 ?>

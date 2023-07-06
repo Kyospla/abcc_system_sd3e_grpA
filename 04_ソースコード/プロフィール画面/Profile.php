@@ -8,14 +8,14 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 <link rel="stylesheet" href="./css/style.css">
-<link rel="stylesheet" href="../トップ画面/css/style.css">
+<link rel="stylesheet" href="../Top/css/style.css">
 <title>プロフィール画面</title>
 </head>
 <body>
 <?php
     session_start();
     if(isset($_SESSION['name']) == false || isset($_SESSION['id']) == false){
-      header('Location:../ログイン画面/login.php');
+      header('Location:../Login/Login.php');
     }
   ?>
   <nav class="navbar navbar-expand-md navbar-dark" aria-label="Fourth navbar example" style="background-color:#76FF60">
@@ -122,9 +122,9 @@
         </div>
         <div class="col-7">
             <input type="password" class="box"  name="pass" value="<?php echo $row['user_pass']?>" readonly>
-            <button class="btn btn-warning text-white" onclick="location.href='../プロフィール修正/ChackPass.php'">変更する</button>
+            <button class="btn btn-warning text-white" onclick="location.href='../Profilefix/ChackPass.php'">変更する</button>
         </div>
-        <button class="btn btn-primary text-white offset-5 col-2 mt-3" onclick="location.href='../プロフィール修正/Profilefix.php'">修正する</button>
+        <button class="btn btn-primary text-white offset-5 col-2 mt-3" onclick="location.href='../Profilefix/Profilefix.php'">修正する</button>
         <?php 
               }
             ?>
