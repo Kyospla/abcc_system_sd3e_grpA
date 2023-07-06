@@ -63,7 +63,7 @@
           <h1 class="mb-2 mt-3">プロフィール</h1>
         </div>
         <div class="col-3 text-end mt-3 ">
-          <input type="submit" class="btn btn-danger" value="ログアウト">
+          
           <button class="btn btn-danger" onclick="location.href='../Login/Logout.php'">ログアウト</button>
         </div>
       </div>
