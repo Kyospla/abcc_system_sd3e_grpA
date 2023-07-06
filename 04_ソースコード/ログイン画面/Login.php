@@ -27,6 +27,7 @@
                     <?php
                     if(isset($_SESSION['msg'])){ 
                         echo $_SESSION['msg'] ;
+                        unset($_SESSION['msg']);
                     }
                     ?>
                 </p>
@@ -42,7 +43,7 @@
                     <input type="submit" value="ログイン" class="btn btn-warning textbtn" name="login">
                 </div>
                 <div class="text-center mt-4">
-                    <p>初めての方は<a href="../新規ユーザー登録/UserInput.html">こちらから</a></p>
+                    <p>初めての方は<a href="../UserInput/UserInput.html">こちらから</a></p>
                 </div>
             </form>
         </div>

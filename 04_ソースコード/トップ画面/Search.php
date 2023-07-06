@@ -64,13 +64,13 @@
           <div class="card-body">
             <h5 class="nikku-name"><?php echo $row['user_niku']?><span class="zikan">
               <?php 
-              echo $row['threads_date']
+              echo $row['threads_date'];
               //以下のコードはthreadsテーブルやcommentsテーブルの日付を入れるコードです。
               //echo $row['threads_data']
               // $timestamp = time() ;
               // date_default_timezone_set('Asia/Tokyo');
               // $week = array( "日", "月", "火", "水", "木", "金", "土" );
-              //  echo date("Y年n月d日(".$week[date("w")].") H:i",$timestamp) 
+              // $dayStr = date("Y年n月d日(".$week[date("w")].") H:i",$timestamp); 
               ?>
               </span></h5>
             <h2 class="card-title"><?php echo $row['threads_title']?></h2>
