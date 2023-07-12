@@ -18,25 +18,27 @@ $username = "LAA1418543";
 $password = "12345hiroyuki";
 $dbname = "LAA1418543-hiroyuki";
 
-// データベースに接続
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("データベースに接続できませんでした: " . $e->getMessage());
-}
+// 接続を作成
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-// 格納するデータ
-$name = 'John Doe';
-$email = 'johndoe@example.com';
-$age = 25;
+// 接続を確認
+if ($conn->connect_error) {
+    die("データベースに接続できませんでした: " . $conn->connect_error);
+}
+// echo "MySQLデータベースへの接続に成功しました！";
 
 // SQLクエリの作成と実行
 try {
-    $stmt = $pdo->prepare("INSERT INTO users (name, email, age) VALUES (:name, :email, :age)");
-    $stmt->bindParam(':name', $name);
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':age', $age);
+    $stmt = $pdo->prepare("INSERT INTO user (name, nikku, post, address, address2, tel, mail, pass, passcheck) VALUES (:name, :nikku, :post, :address, :address2, :tel, :mail, :pass, :passcheck)");
+    $stmt->bindParam(':name', $_POST['name']);
+    $stmt->bindParam(':nikku', $_POST['nikku']);
+    $stmt->bindParam(':post', $_POST['post']);
+    $stmt->bindParam(':address', $_POST['address']);
+    $stmt->bindParam(':address2', $_POST['address2']);
+    $stmt->bindParam(':tel', $_POST['tel']);
+    $stmt->bindParam(':mail', $_POST['mail']);
+    $stmt->bindParam(':pass', $_POST['pass']);
+    $stmt->bindParam(':passcheck', $_POST['passcheck']);
     $stmt->execute();
     echo "データを格納しました。";
 } catch (PDOException $e) {
