@@ -36,7 +36,7 @@
         </ul>
         <a href="../Profile/Profile.php" class="name"><?php echo $_SESSION['name'] ?></a>
         <form role="search" action="./Search.php" method="post">
-          <input class="form-control" type="search" placeholder="タイトル検索" aria-label="Search" name="search">
+          <input class="form-control" type="search" placeholder="タイトル検索" aria-label="Search" name="search" required>
         </form>
       </div>
     </div>
@@ -55,11 +55,12 @@
     <h1 class="mt-4 offset-1">検索結果</h1>
     <h5 class="mt-2 offset-1">検索キーワード：<?php echo $_POST["search"] ?></h5>
     <h5 class="mt-2 offset-1">件数：<?php echo count($selectArray)?></h5>
-    <div class="card offset-1 col-10 card-box mt-3">
-        <?php 
+    <?php 
           foreach($selectArray as $row){
             $id = $row['threads_id'];
-        ?>
+    ?>
+    <div class="card offset-1 col-10 card-box mt-3">
+        
         <a href="../Reply/Reply.php?id=<?php echo $id ?>" class="thred-link">
           <div class="card-body">
             <h5 class="nikku-name"><?php echo $row['user_niku']?><span class="zikan">
@@ -76,10 +77,11 @@
             <h2 class="card-title"><?php echo $row['threads_title']?></h2>
           </div>
         </a>
-        <?php
+        
+    </div>
+    <?php
           } 
         ?>
-    </div>
 </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
