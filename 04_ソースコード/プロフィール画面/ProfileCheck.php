@@ -71,7 +71,7 @@
         $ps->bindvalue(8,$_SESSION['id'],PDO::PARAM_INT);
         $ps->execute();
 
-        //セッション内容を破棄する。
+        //エラーメッセージのセッション内容を破棄する。
         unset($_SESSION['errormsg']);
         //氏名のセッションを更新する
 	    $_SESSION['name'] = $_POST['name'];
@@ -81,7 +81,7 @@
 
     //チェックNGの場合の処理
     }else{
-        //エラーメッセージをProfilefix.phpに表示させる。
+        //NGの場合、Profilefix.phpに遷移する。
         header('Location:../ProfileChange/Profilefix.php');
     }
 ?>
