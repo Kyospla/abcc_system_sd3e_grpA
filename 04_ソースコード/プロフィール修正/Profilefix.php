@@ -41,7 +41,7 @@
         </ul>
         <a href="../Profile/Profile.php" class="name"><?php echo $_SESSION['name'] ?></a>
         <form role="search" action="../Top/Search.php" method="post">
-          <input class="form-control" type="search" placeholder="タイトル検索" aria-label="Search" name="search">
+          <input class="form-control" type="search" placeholder="タイトル検索" aria-label="Search" name="search" required>
         </form>
       </div>
     </div>
