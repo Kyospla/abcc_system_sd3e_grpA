@@ -41,19 +41,24 @@
         </div>
       </nav>
     
-<!-- タイトルとコメントをPostcheck.phpに送る -->
-<form action="post.php" method="POST">
-	<h1 class="offset-1 mt-2">情報共有掲示板</h1>
-	<div class="offset-1 col-10 mt-3">
-    <label  for="txt1"  class="form-label">タイトル</label>
-    <input type="text" name="thread_title" class="form-control" id="txt1" placeholder="タイトルを記入してください">
-	</div>
-	
-  <div class="offset-1 col-10">	
-    <label  for="txt2"  class="form-label">投稿内容</label>  	    	
-    <textarea type="text"  name="comment" class="form-control" id="txt2" placeholder="投稿内容を記入してください" rows="3"></textarea>
+      <!-- タイトルとコメントをPostcheck.phpに送る -->
+ <form action="Postcheck.php" method="POST">
+  <h1 class="offset-1 mt-2">情報共有掲示板</h1>
+  <div class="offset-1 col-10 mt-3">
+    <label for="txt1" class="form-label">タイトル</label>
+    <input type="text" name="thread_title" class="form-control" id="txt1" placeholder="タイトルを記入してください" required minlength="1" maxlength="50">
   </div>
+
+  <div class="offset-1 col-10">
+    <label for="txt2" class="form-label">投稿内容</label>
+    <textarea type="text" name="comment" class="form-control" id="txt2" placeholder="投稿内容を記入してください" rows="3" required minlength="1" maxlength="800"></textarea>
+  </div>
+
   <input type="submit" class="mt-3 offset-8 col-3" name="btn1" value="投稿する">
 </form>
+
+
 </body>
 </html>
+
+<!-- <input type="password" name="pas1" class="form-control" pattern="^[0-9A-Za-z]+$" value="" required inputmode="email" minlength="0" maxlength="20"> -->
