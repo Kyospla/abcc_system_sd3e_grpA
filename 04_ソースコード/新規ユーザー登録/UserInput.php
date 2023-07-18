@@ -21,12 +21,12 @@
                     </div>
                     <p class="text-center">
                     <?php
-                        session_start(); // セッションの開始
+                        // session_start(); // セッションの開始
 
-                        if (isset($_SESSION['errormsg'])) {
-                            echo nl2br($_SESSION['errormsg']);
-                            unset($_SESSION['errormsg']);
-                        }
+                        // if (isset($_SESSION['errormsg'])) {
+                        //     echo nl2br($_SESSION['errormsg']);
+                        //     unset($_SESSION['errormsg']);
+                        // }
                         ?>
                     </p>
                     <div class="col-12">
