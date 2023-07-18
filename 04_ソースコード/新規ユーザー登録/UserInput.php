@@ -11,45 +11,8 @@
     <title>新規ユーザー登録</title>
 </head>
 
-<?php
-// データベースの接続情報
-$servername = "mysql213.phy.lolipop.lan";
-$username = "LAA1418543";
-$password = "12345hiroyuki";
-$dbname = "LAA1418543-hiroyuki";
-
-// 接続を作成
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// 接続を確認
-if ($conn->connect_error) {
-    die("データベースに接続できませんでした: " . $conn->connect_error);
-}
-// echo "MySQLデータベースへの接続に成功しました！";
-
-// SQLクエリの作成と実行
-try {
-    $stmt = $pdo->prepare("INSERT INTO user (name, nikku, post, address, address2, tel, mail, pass, passcheck) VALUES (:name, :nikku, :post, :address, :address2, :tel, :mail, :pass, :passcheck)");
-    $stmt->bindParam(':name', $_POST['name']);
-    $stmt->bindParam(':nikku', $_POST['nikku']);
-    $stmt->bindParam(':post', $_POST['post']);
-    $stmt->bindParam(':address', $_POST['address']);
-    $stmt->bindParam(':address2', $_POST['address2']);
-    $stmt->bindParam(':tel', $_POST['tel']);
-    $stmt->bindParam(':mail', $_POST['mail']);
-    $stmt->bindParam(':pass', $_POST['pass']);
-    $stmt->bindParam(':passcheck', $_POST['passcheck']);
-    $stmt->execute();
-    echo "データを格納しました。";
-} catch (PDOException $e) {
-    die("データを格納できませんでした: " . $e->getMessage());
-}
-
-// データベース接続のクローズ
-$pdo = null;
-?>
-
 <body>
+<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <div id="app">
         <div class="container-fluid">
             <div class="row">
