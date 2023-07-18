@@ -12,7 +12,7 @@
 </head>
 
 <body>
-<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+<form method="POST" action="UserCheck.php">
     <div id="app">
         <div class="container-fluid">
             <div class="row">
@@ -20,6 +20,15 @@
                     <h1 class="text-center p-2">情報共有掲示板</h1>
                 </div>
                 <p class="text-center">エラー表示</p>
+                
+                <?php
+                    session_start(); // セッションの開始
+
+                    if (isset($_SESSION['errormsg'])) {
+                        echo '<p class="text-center error">' . nl2br($_SESSION['errormsg']) . '</p>';
+                        unset($_SESSION['errormsg']);
+                    }
+                    ?>
                 
                 <div class="col-12">
                     <h1 class="text-center mt-3 mb-5">新規ユーザー登録</h1>
@@ -101,5 +110,6 @@
     </div>
     <script src="./script/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+</form>
 </body>
 </html>
