@@ -12,16 +12,17 @@
 <body>
     <div class="container-fluid">
     <?php
-            // session_start();
-            // if(isset($_SESSION['name']) == true && isset($_SESSION['id']) == true){
-            //     header('Location:Top.php');
-            // }
+            session_start();
+            if(isset($_SESSION['name']) == true && isset($_SESSION['id']) == true){
+                header('Location:Top.php');
+            }
     ?>
         <div class="row">
             <div class="col-12" style="background-color:#76FF60">
                 <h1 class="text-center p-2">情報共有掲示板</h1>
             </div>
             <h1 class="text-center mt-5">ログイン</h1>
+<<<<<<< HEAD
             <div class="text-center mt-2">
             <?php
             if(isset($_SESSION['msg'])){
@@ -46,12 +47,34 @@
             <div class="text-center mt-4">
                 <p>初めての方は<a href="../新規ユーザー登録/UserInput.html">こちらから</a></p>
             </div>
+=======
+            <form action="./UserExist.php" method="post">
+                <p class="error text-center mt-2">
+                    <?php
+                    if(isset($_SESSION['msg'])){ 
+                        echo $_SESSION['msg'] ;
+                        unset($_SESSION['msg']);
+                    }
+                    ?>
+                </p>
+                <div class="offset-4 col-4">
+                    <label for="txt1" class="form-label mt-3 mb-0">メールアドレス</label>
+                    <input type="text" class="form-control" id="txt1" placeholder="name@example.com" name="mail">
+                </div>
+                <div class="offset-4 col-4">
+                    <label for="txt2" class="form-label mt-2 mb-0">パスワード</label>
+                    <input type="password" class="form-control" id="txt2" name="pass">
+                </div>
+                <div class="row offset-4 col-4 mt-3">
+                    <input type="submit" value="ログイン" class="btn btn-warning textbtn" name="login">
+                </div>
+                <div class="text-center mt-4">
+                    <p>初めての方は<a href="../UserInput/UserInput.html">こちらから</a></p>
+                </div>
+            </form>
+>>>>>>> 6280a1dd334d86c4b8ed06bc8af0e45db9c8c8d0
         </div>
     </div>
-    
-        <form action="./UserExist.php" method="post">
-    
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 </body>
 </html>

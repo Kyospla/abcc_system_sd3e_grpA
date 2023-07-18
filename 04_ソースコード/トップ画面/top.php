@@ -38,6 +38,7 @@
         <form role="search">
           <input class="form-control" type="search" placeholder="タイトル検索" aria-label="Search">
         </form>
+
       </div>
     </div>
   </nav>
@@ -47,13 +48,33 @@
         <hr class="offset-2 col-8" size="4"noshade>
      </div>
         <div class="card offset-2 col-8 offset-2 card-box mt-2">
-          <a href="#" class="thred-link">
-            <div class="card-body">
-              <h5 class="nikku-name"><span class="zikan">2023年5月16日(火)18:02:34</span></h5>
-              <h2 class="card-title">新卒sesってどう？</h2>
-            </div>
-          </a>
-        </div>
-        
+          
+          <?php
+          $pdo = new PDO('mysql:host=localhost;dbname=hiroyuki;charset=utf8',
+          'root', 'root');
+          $sql="SELECT comments.comments_id,comments.comment,threads.threads_title,comments.post_date,users.user_niku,users.user_id FROM  (comments INNER JOIN threads ON comments.threads_id=threads.threads_id) INNER JOIN users ON comments.user_id = users.user_id ORDER BY comments_id ASC";
+$selectData = $pdo->query($sql);
+
+//foreach($selectData as $row){
+  //if($row['comments_id'] == 1){
+   //echo $row['threads_title']."<br>";
+  //};
+    //echo $row['user_niku']."<br>";
+    //echo $row['comment']."<br>";
+   // echo"--------------------------<br>";
+//}
+//スレッドを降順にする
+$sql="SELECT threads_title threads_date user_niku
+FROM threads
+INNER JOIN users ON threads.user_id = users.user_id
+ORDER BY threads_date DESC";
+$selectData = $pdo->query($sql);
+foreach($selectData as $row){
+  echo $row['user_niku'];
+  echo $row['threads_date']."<br>";
+  echo $row['threads_title'];
+}
+
+?>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
      </body>

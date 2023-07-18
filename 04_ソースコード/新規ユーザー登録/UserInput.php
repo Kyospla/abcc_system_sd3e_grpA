@@ -10,14 +10,25 @@
     <link rel="stylesheet" href="./css/style.css">
     <title>新規ユーザー登録</title>
 </head>
+
 <body>
+<form method="POST" action="UserCheck.php">
     <div id="app">
         <div class="container-fluid">
-            <form>
             <div class="row">
                 <div class="col-12" style="background-color:#76FF60">
                     <h1 class="text-center p-2">情報共有掲示板</h1>
                 </div>
+                <p class="text-center">エラー表示</p>
+                
+                <?php
+                    session_start(); // セッションの開始
+
+                    if (isset($_SESSION['errormsg'])) {
+                        echo '<p class="text-center error">' . nl2br($_SESSION['errormsg']) . '</p>';
+                        unset($_SESSION['errormsg']);
+                    }
+                    ?>
                 
                 <div class="col-12">
                     <h1 class="text-center mt-3 mb-5">新規ユーザー登録</h1>
@@ -95,10 +106,10 @@
                 <p v-if="isInValidaPassCheck" class="error offset-5 col-7">※パスワードが一致していません。</p>
                 <input type="submit"  class="btn btn-warning mt-2 mb-4 offset-5 col-2" value="登録する">
             </div>
-            </form>
         </div>
     </div>
     <script src="./script/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+</form>
 </body>
 </html>
