@@ -20,13 +20,13 @@
                         <h1 class="text-center p-2">情報共有掲示板</h1>
                     </div>
                     <p class="text-center">
-                    <?php
+                    <?php 
                         // session_start(); // セッションの開始
 
-                        // if (isset($_SESSION['errormsg'])) {
-                        //     echo nl2br($_SESSION['errormsg']);
-                        //     unset($_SESSION['errormsg']);
-                        // }
+                        //  if (isset($_SESSION['errormsg'])) {
+                        //      echo nl2br($_SESSION['errormsg']);
+                        //      unset($_SESSION['errormsg']);
+                        //  }
                         ?>
                     </p>
                     <div class="col-12">
