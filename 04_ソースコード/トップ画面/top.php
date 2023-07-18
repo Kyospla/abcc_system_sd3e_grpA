@@ -68,7 +68,9 @@ $sql="SELECT threads_title threads_date user_niku
 FROM threads
 INNER JOIN users ON threads.user_id = users.user_id
 ORDER BY threads_date DESC";
+//sql実行
 $selectData = $pdo->query($sql);
+//下の三つを繰り返し表示
 foreach($selectData as $row){
   echo $row['user_niku'];
   echo $row['threads_date']."<br>";
