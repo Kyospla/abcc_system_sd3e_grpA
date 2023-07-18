@@ -42,7 +42,7 @@
         </ul>
         <a href="../Profile/Profile.php" class="name"><?php echo $_SESSION['name'] ?></a>
         <form role="search" action="../Top/Search.php" method="post">
-          <input class="form-control" type="search" placeholder="タイトル検索" aria-label="Search" name="search">
+          <input class="form-control" type="search" placeholder="タイトル検索" aria-label="Search" name="search" required>
         </form>
       </div>
     </div>
@@ -124,7 +124,7 @@
             <input type="password" class="box"  name="pass" value="<?php echo $row['user_pass']?>" readonly>
             <button class="btn btn-warning text-white" onclick="location.href='../Profilefix/ChackPass.php'">変更する</button>
         </div>
-        <button class="btn btn-primary text-white offset-5 col-2 mt-3" onclick="location.href='../Profilefix/Profilefix.php'">修正する</button>
+        <button class="btn btn-primary text-white offset-5 col-2 mt-3" onclick="location.href='../ProfileChange/Profilefix.php'">修正する</button>
         <?php 
               }
             ?>
