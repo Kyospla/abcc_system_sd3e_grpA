@@ -11,34 +11,35 @@
 <title>トップ画面</title>
 </head>
 <body>
+<?php
+    session_start();
+    if(isset($_SESSION['name']) == false || isset($_SESSION['id']) == false){
+      header('Location:../Login/Login.php');
+    }
+?>
     
-  <nav class="navbar navbar-expand-md navbar-dark" aria-label="Fourth navbar example" style="background-color:#76FF60">
+<nav class="navbar navbar-expand-md navbar-dark" aria-label="Fourth navbar example" style="background-color:#76FF60">
     <div class="container-fluid">
-      <!-- <a class="navbar-brand" href="#"><img src="../img/rogo b t.png" width="20%"></a> -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
+      
       <div class="collapse navbar-collapse" id="navbarsExample04">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
-          <!-- <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="./catalog.html"><font size="5">トップ</font></a>
-          </li> -->
           <li class="nav-item">
-            <a class="text-black nav-link" href="#">情報共有掲示板</a>
+            <a class="text-black nav-link" href="./Top.php">情報共有掲示板</a>
           </li>
           <li class="nav-item">
-            <a class="text-black nav-link" href="#">投稿</a>
+            <a class="text-black nav-link" href="../Post/Post.php">投稿</a>
           </li>
           <li class="nav-item">
-            <a class="text-black nav-link " href="./login.html">投稿履歴</a>
+            <a class="text-black nav-link " href="../History/History.php">投稿履歴</a>
           </li>
         </ul>
-        <a href="#" class="name">名無しさん</a>
-        <form role="search">
-          <input class="form-control" type="search" placeholder="タイトル検索" aria-label="Search">
+        <a href="../Profile/Profile.php" class="name"><?php echo $_SESSION['name'] ?></a>
+        <form role="search" action="./Search.php" method="post">
+          <input class="form-control" type="search" placeholder="タイトル検索" aria-label="Search" name="search" required>
         </form>
-
       </div>
     </div>
   </nav>
@@ -58,22 +59,27 @@
         <hr class="offset-2 col-8" size="4"noshade>
       </div>  
           <?php
-          for($cnt = 0;$cnt < 30;$cnt++){
+          $cnt = 0;
             foreach($selectArray as $row){
               $id = $row['threads_id'];
+              if($cnt < 30){
+                $cnt++;
             
           ?>
         <div class="card offset-2 col-8 offset-2 card-box mt-2">
           <a href="../Reply/Reply.php?id=<?php echo $id ?>" class="thred-link">
             <div class="card-body">
               <h5 class="nikku-name"><?php echo $row['user_niku']?><span class="zikan">
+                <?php 
+                echo $row['threads_date'];
+                ?>
               </span></h5>
               <h2 class="card-title"><?php echo $row['threads_title']?></h2>
             </div>
             </a>
         </div>
         <?php
-            }
+              }
           }
         ?>
         </div>
