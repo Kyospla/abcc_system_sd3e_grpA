@@ -42,39 +42,40 @@
       </div>
     </div>
   </nav>
+  <?php
+   $pdo = new PDO('mysql:host=mysql213.phy.lolipop.lan;dbname=LAA1418543-hiroyuki;charset=utf8','LAA1418543', '12345hiroyuki');
+   //スレッドを降順にする
+   $sql="SELECT * FROM threads AS T INNER JOIN users AS U
+          ON T.user_id = U.user_id
+          ORDER BY T.threads_date DESC";
+    $ps = $pdo -> prepare($sql);
+    $ps -> execute();
+    $selectArray = $ps -> fetchAll();
+  ?>
       <div class = "box">
         <div class = "text">
         <br><h1 class="offset-2 col-8 text-black mb-2 text-rihgt">タイムライン</h1>
         <hr class="offset-2 col-8" size="4"noshade>
-     </div>
-        <div class="card offset-2 col-8 offset-2 card-box mt-2">
-          
+      </div>  
           <?php
-          $pdo = new PDO('mysql:host=localhost;dbname=hiroyuki;charset=utf8',
-          'root', 'root');
-          $sql="SELECT comments.comments_id,comments.comment,threads.threads_title,comments.post_date,users.user_niku,users.user_id FROM  (comments INNER JOIN threads ON comments.threads_id=threads.threads_id) INNER JOIN users ON comments.user_id = users.user_id ORDER BY comments_id ASC";
-$selectData = $pdo->query($sql);
-
-//foreach($selectData as $row){
-  //if($row['comments_id'] == 1){
-   //echo $row['threads_title']."<br>";
-  //};
-    //echo $row['user_niku']."<br>";
-    //echo $row['comment']."<br>";
-   // echo"--------------------------<br>";
-//}
-//スレッドを降順にする
-$sql="SELECT threads_title threads_date user_niku
-FROM threads
-INNER JOIN users ON threads.user_id = users.user_id
-ORDER BY threads_date DESC";
-$selectData = $pdo->query($sql);
-foreach($selectData as $row){
-  echo $row['user_niku'];
-  echo $row['threads_date']."<br>";
-  echo $row['threads_title'];
-}
-
-?>
+          for($cnt = 0;$cnt < 30;$cnt++){
+            foreach($selectArray as $row){
+              $id = $row['threads_id'];
+            
+          ?>
+        <div class="card offset-2 col-8 offset-2 card-box mt-2">
+          <a href="../Reply/Reply.php?id=<?php echo $id ?>" class="thred-link">
+            <div class="card-body">
+              <h5 class="nikku-name"><?php echo $row['user_niku']?><span class="zikan">
+              </span></h5>
+              <h2 class="card-title"><?php echo $row['threads_title']?></h2>
+            </div>
+            </a>
+        </div>
+        <?php
+            }
+          }
+        ?>
+        </div>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
      </body>

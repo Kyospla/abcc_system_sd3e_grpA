@@ -68,7 +68,7 @@ foreach($selectData as $row){
   
   <form action = "replycheck.php" method="post">
 <h1>返信する</h1>
-<input type="text" size="30" name = "reply">
+<input type="text" name="reply" class="form-control" id="txt" placeholder="返信を入力してください" required minlength="1" maxlength="800">
 <br>
 <input type="submit" value="送信">
 </form>
