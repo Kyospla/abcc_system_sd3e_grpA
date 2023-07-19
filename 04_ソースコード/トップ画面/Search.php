@@ -55,6 +55,7 @@
     <h1 class="mt-4 offset-1">検索結果</h1>
     <h5 class="mt-2 offset-1">検索キーワード：<?php echo $_POST["search"] ?></h5>
     <h5 class="mt-2 offset-1">件数：<?php echo count($selectArray)?></h5>
+    <hr class="offset-1 col-10" size="4" noshade>
     <?php 
           foreach($selectArray as $row){
             $id = $row['threads_id'];
