@@ -23,7 +23,7 @@
                 <div class="col-12">
                     <h1 class="text-center mt-3 mb-5">新規ユーザー登録</h1>
                 </div>
-                <a href="../新規ユーザー登録画面/UserInput.php" class="name"><?php echo $_SESSION['name'] ?></a>
+                <a href="../UserInput/UserInput.php" class="name"><?php echo $_SESSION['name'] ?></a>
             <form role="search" action="../Top/Search.php" method="post">
               <input class="form-control" type="search" placeholder="タイトル検索" aria-label="Search" name="search" required>
             </form>
