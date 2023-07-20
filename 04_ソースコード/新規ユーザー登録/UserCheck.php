@@ -51,7 +51,13 @@
     if (!preg_match('/^[a-zA-Z0-9.?\/\-@]{8,24}$/', $_POST['pass'])) {
         $_SESSION['errormsg'] .= "パスワードは半角英数字と記号（.?/-@）のみ使用可能で、8文字以上24文字以内で入力してください。\n";
         $cnt++;
-    }    
+    }
+    
+    //パスワード再確認一致
+    if(var_dump($_POST['pass'] === $_POST['passcheck'])){
+        $_SESSION['errormsg'] .= "パスワードと一致していません。\n";
+        $cnt++;
+    }
     
 
     //チェックOKの場合の処理
