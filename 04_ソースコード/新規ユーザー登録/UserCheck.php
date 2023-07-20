@@ -48,10 +48,10 @@
     }
     
     //パスワードの正規表示チェック
-    if(!preg_match("/^[a-zA-Z0-9.?/-@]{8,24}$/", $_POST['pass'])){
-        $_SESSION['errormsg'] .= "パスワードを8文字以上24文字以内で入力してください。\n";
+    if (!preg_match('/^[a-zA-Z0-9.?\/\-@]{8,24}$/', $_POST['pass'])) {
+        $_SESSION['errormsg'] .= "パスワードは半角英数字と記号（.?/-@）のみ使用可能で、8文字以上24文字以内で入力してください。\n";
         $cnt++;
-    }
+    }    
     
 
     //チェックOKの場合の処理
@@ -64,11 +64,11 @@
         $ps->bindValue(1, $_POST['name'], PDO::PARAM_STR);
         $ps->bindValue(2, $_POST['nikku'], PDO::PARAM_STR);
         $ps->bindValue(3, $_POST['post'], PDO::PARAM_STR);
-        $ps->bindvalue(4,$_POST['address'],PDO::PARAM_STR);
+        $ps->bindvalue(4, $_POST['address'],PDO::PARAM_STR);
         $ps->bindValue(5, $_POST['address2'], PDO::PARAM_STR);
         $ps->bindValue(6, $_POST['tel'], PDO::PARAM_STR);
         $ps->bindValue(7, $_POST['mail'], PDO::PARAM_STR);
-        $ps->bindvalue(8, $_POST['pass'],PDO::PARAM_INT);
+        $ps->bindvalue(8, $_POST['pass'],PDO::PARAM_STR);
         $ps->execute();
 
         //エラーメッセージのセッション内容を破棄する。
