@@ -54,7 +54,7 @@
     }
     
     //パスワード再確認一致
-    if(var_dump($_POST['pass'] === $_POST['passcheck'])){
+    if(!var_dump($_POST['pass'] === $_POST['passcheck'])){
         $_SESSION['errormsg'] .= "パスワードと一致していません。\n";
         $cnt++;
     }
