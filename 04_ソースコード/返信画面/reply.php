@@ -10,6 +10,12 @@
     <title>返信画面</title>
 </head>
 <body>
+<?php
+    session_start();
+    if(isset($_SESSION['name']) == false || isset($_SESSION['id']) == false){
+      header('Location:../Login/Login.php');
+    }
+  ?>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Fourth navbar example" style="background-color:#76FF60">
     <div class="container-fluid">
       <!-- <a class="navbar-brand" href="#"><img src="../img/rogo b t.png" width="20%"></a> -->
