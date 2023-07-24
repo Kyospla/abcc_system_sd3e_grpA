@@ -10,6 +10,12 @@
     <title>返信画面</title>
 </head>
 <body>
+<?php
+    session_start();
+    if(isset($_SESSION['name']) == false || isset($_SESSION['id']) == false){
+      header('Location:../Login/Login.php');
+    }
+  ?>
     <nav class="navbar navbar-expand-md navbar-dark" aria-label="Fourth navbar example" style="background-color:#76FF60">
     <div class="container-fluid">
       <!-- <a class="navbar-brand" href="#"><img src="../img/rogo b t.png" width="20%"></a> -->
@@ -43,14 +49,14 @@
 
   <h2>返信画面</h2>
 <?php
-//session_start();
+session_start();
 
 // セッションからIDを取得
-//$id = $_SESSION['id'];
+if (isset($_SESSION['thread_id'])) {
+  $thread_id = $_SESSION['thread_id'];
+}
 $pdo = new PDO('mysql:host=localhost;dbname=hiroyuki;charset=utf8',
 'root', 'root');
-
-
 
 $sql="SELECT comments.comments_id,comments.comment,threads.threads_title,comments.post_date,users.user_niku,users.user_id FROM  (comments INNER JOIN threads ON comments.threads_id=threads.threads_id) INNER JOIN users ON comments.user_id = users.user_id ORDER BY comments_id ASC";
 $selectData = $pdo->query($sql);
