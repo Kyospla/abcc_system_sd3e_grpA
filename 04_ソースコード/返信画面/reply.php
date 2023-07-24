@@ -58,8 +58,6 @@ if (isset($_SESSION['thread_id'])) {
 $pdo = new PDO('mysql:host=localhost;dbname=hiroyuki;charset=utf8',
 'root', 'root');
 
-
-
 $sql="SELECT comments.comments_id,comments.comment,threads.threads_title,comments.post_date,users.user_niku,users.user_id FROM  (comments INNER JOIN threads ON comments.threads_id=threads.threads_id) INNER JOIN users ON comments.user_id = users.user_id ORDER BY comments_id ASC";
 $selectData = $pdo->query($sql);
 
