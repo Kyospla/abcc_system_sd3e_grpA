@@ -43,10 +43,12 @@
 
   <h2>返信画面</h2>
 <?php
-//session_start();
+session_start();
 
 // セッションからIDを取得
-//$id = $_SESSION['id'];
+if (isset($_SESSION['thread_id'])) {
+  $thread_id = $_SESSION['thread_id'];
+}
 $pdo = new PDO('mysql:host=localhost;dbname=hiroyuki;charset=utf8',
 'root', 'root');
 

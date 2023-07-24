@@ -41,19 +41,9 @@
 
 	<?php
             // データベースへの接続
-            $servername = "mysql213.phy.lolipop.lan";
-            $username = "LAA1418543";
-            $password = "12345hiroyuki";
-            $dbname = "LAA1418543-hiroyuki";
+            $pdo = new PDO('mysql:host=localhost;dbname=hiroyuki;charset=utf8',
+            'root', 'root');
 
-            // 接続を作成
-            $conn = new mysqli($servername, $username, $password, $dbname);
-
-            // 接続を確認
-            if ($conn->connect_error) {
-              die("データベースに接続できませんでした: " . $conn->connect_error);
-            }
-            // echo "MySQLデータベースへの接続に成功しました！";
             
 
 
