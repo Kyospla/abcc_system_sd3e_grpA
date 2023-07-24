@@ -8,8 +8,15 @@
 <title>パスワード確認画面</title>
 </head>
 <body>
+  <?php
+  //現在のパスワードをチチェック
+    session_start();
+    if(isset($_SESSION['name']) == false || isset($_SESSION['id']) == false){
+      header('Location:../パスワード確認/checkPass.php');
+    }
+?>
     
-  <nav class="navbar navbar-expand-md navbar-dark" aria-label="Fourth navbar example" style="background-color:#76FF60">
+    <nav class="navbar navbar-expand-md navbar-dark" aria-label="Fourth navbar example" style="background-color:#76FF60">
     <div class="container-fluid">
       <!-- <a class="navbar-brand" href="#"><img src="../img/rogo b t.png" width="20%"></a> -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,23 +39,46 @@
           </li>
         </ul>
         <a href="#" class="name">名無しさん</a>
-        <form role="search">
-          <input class="form-control" type="search" placeholder="タイトル検索" aria-label="Search">
+        <form role="search" action="../Top/Search.php" method="post">
+        <input class="form-control" type="search" placeholder="タイトル検索" aria-label="Search" name="search" required>
         </form>
       </div>
     </div>
   </nav>
+  <div class="container">
+  <?php
+// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+//   $password = $_POST['password'];
+//   $confirmPassword = $_POST['confirm_password'];
+
+//   if ($password === $confirmPassword) {
+//     echo "パスワードが一致しました。";
+//   } else {
+//     echo "パスワードが一致しません。";
+//}
+//}
+?>
 <div class="row">
-    <h1 class="offset-2 col-8 text-black mt-3 mb-5 text-rihgt">現在のパスワードの確認</h1>
-    <div class="col-5">
-      <h3 class="text-end">現在のパスワードの確認:</h3>
+  <form action="./CurrentPassCheck.php" method="post">
+  <h1 class="offset-2 col-8 text-black mt-3 mb-5 text-right">現在のパスワードの確認</h1>
+    <div class="error">
+      <?php
+        if(isset($_SESSION['errormsg'])){
+          echo nl2br($_SESSION['errormsg']);
+          unset($_SESSION['errormsg']);
+        }
+      ?>
     </div>
-    <div class="row col-4">
-        <input type="password"  name="pass" placeholder="パスワードの入力"/>
+    <div>
+    <div class="row justify-content-center"> <!-- 中央寄せするためのdivを追加 -->
+        <h3 class="col-5 text-center">現在のパスワードの確認:</h3> <!-- text-centerクラスを追加 -->
+        <input type="password" id="password" name="pass" class="col-4" required>
+    </div>
     </div>  
     <div class="row offset-4 col-3  mt-4">
         <input type="submit" value="変更する" class="btn btn-warning" name="changepass">
     </div>
+  </form>
 </div>
     
 
