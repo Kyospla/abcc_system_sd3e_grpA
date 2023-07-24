@@ -24,16 +24,13 @@
                     <h1 class="text-center mt-3 mb-5">新規ユーザー登録</h1>
                 </div>
                 <a href="../UserInput/UserInput.php" class="name"><?php echo $_SESSION['name'] ?></a>
-            <form role="search" action="../Top/Search.php" method="post">
-              <input class="form-control" type="search" placeholder="タイトル検索" aria-label="Search" name="search" required>
-            </form>
           </div>
         </div>
     <div class="row">
         <h5 class="mt-5 text-center">
             ユーザー情報が正常に登録されました。
         </h5>
-        <a class="col-12 text-center mt-3"href="./UserInput.php">新規ユーザー登録画面へ戻る</a>
+        <a class="col-12 text-center mt-3"href="../Login/Login.php">新規ユーザー登録画面へ戻る</a>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
